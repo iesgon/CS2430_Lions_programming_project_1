@@ -1,1 +1,63 @@
+# Project Plan: CS 2430 — Programming Project 1
+**Team Name:** The Lions  
+**Project Title:** Sets, Multisets, and Natural-Language Data Queries (Zoo Animals)  
+**Primary Language:** Java  
+**Last Updated:** February 22, 2026
 
+---
+
+### 1. Project Information
+*   **Course/Term:** CS 2430 Spring 2026
+*   **Project:** Programming Project 1
+*   **Start Date:** February 14th, 2026
+*   **Due Date:** March 1st, 2026
+*   **Checkpoint Date:** February 22nd, 2026
+
+### 2. Team and Roles
+
+
+| TEAM MEMBER | ROLE | PRIMARY RESPONSIBILITIES |
+| :--- | :--- | :--- |
+| **Iesus Gonzalez-Flores** | **Implementation Lead** | Owns core Java classes (`BitStringSet`, `MultiSet`), integrates modules, maintains main branch. |
+| **Edgar Pena Arreola** | **Communication Lead** | Assembles formal report and screencast, ensures run instructions, manages `/docs`. |
+| **Chris Salcedo Cardenas** | **Verification Lead** | Creates test plan for zoo animal data, validates outputs, documents edge case evidence. |
+
+### 3. Repository and Access
+*   **Platform:** GitHub
+*   **Repository URL:** https://github.com/iesgon/CS2430_Lions_programming_project_1.git 
+*   **Instructor Invited?** Yes
+*   **Repo Structure:** Includes `/docs` with pseudocode, UML diagrams, and design notes.
+
+### 4. Milestones (Timeline)
+
+
+| MILESTONE | TARGET DATE | OWNER | DEFINITION OF DONE | STATUS | EVIDENCE POINTER |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Repository set up** | February 21st | Team/Communications | Repository created, README set up | **Done** | [Main](https://github.com/iesgon/CS2430_Lions_programming_project_1/tree/main) |
+| **Core Implementation** | February 25th | Implementation | Set and Multiset operations pass basic zoo animal tests | Not Started | |
+| **Verification Complete** | February 27th | Verification | Edge cases (empty sets, 0-counts) documented | Not Started | |
+| **Report Video Draft** | February 28th | Communications | Analysis of natural language queries drafted | In progress | |
+| **Final Submission** | March 1st 2026 | Team | All deliverables (Video and Report) Finalized | Not Started | |
+
+### 5. Task Backlog
+
+
+| ID | TASK | OWNER | DUE DATE | STATUS | EVIDENCE/NOTES |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 1 | Create repository + baseline README | Team/Communications | Feb 21st | **Done** | Github repository complete, README uploaded [README](https://github.com/iesgon/CS2430_Lions_programming_project_1/blob/main/README.md) |
+| 2 | Draft pseudocode for Set operations | Implementation | Feb 23rd | Not Started | |
+| 3 | Create UML diagram for Java Classes | Implementation | Feb 22nd | **Done** | UML for BitStringSet, MultiSet complete [UML](https://github.com/iesgon/CS2430_Lions_programming_project_1/blob/main/docs/SetsMultiSet.drawio.png)  |
+| 4 | Implement BitStringset | Implementation | Feb 25th | Not Started | |
+| 5 | Implement MultiSet | Implementation | Feb 25th | Not Started | |
+| 6 | Define test cases + expected outputs | Verification | Feb 26th | Not Started | |
+| 7 | Draft report (Section 8 questions) | Communications | Feb 27th | In progress | |
+| 8 | Record 10-min team screencast | Team | Feb 28th | Not Started | |
+
+### 6. Verification Plan
+*   **Correctness Checks:** Unit tests for union, intersection, difference and symmetric difference.
+*   **Zoo Data Tests:** Compare Java outputs against hand-calculated animal counts.
+*   **Edge Cases:**
+    *   Empty Sets: Universal set vs empty animal set.
+    *   Max Multiplicity: Operations on animals with high frequency counts.
+    *   Multiset Subtraction: Ensure counts do not drop below 0.
+*   **Results:** Document 3 representative test cases in /docs.
