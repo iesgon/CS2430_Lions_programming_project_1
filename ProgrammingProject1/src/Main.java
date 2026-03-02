@@ -1,7 +1,22 @@
+/**
+ * Team: Lions
+ * Team members: Iesus Gonzalez, Chris Salcedo, Edgar Pena
+ * CS2430 Section 501
+ * Programming Project 1 - Spring 2026
+ */
+
 import java.util.List;
 
 public class Main
 {
+    /**
+     * Program entry point.
+     * <p>
+     * Creates a universe of zoo animals and runs
+     * both set and multiset test cases.
+     *
+     * @param args command line arguments (not used)
+     */
     public static void main(String[] args)
     {
  /*     ===============================

@@ -1,3 +1,10 @@
+/**
+ * Team: Lions
+ * Team members: Iesus Gonzalez, Chris Salcedo, Edgar Pena
+ * CS2430 Section 501
+ * Programming Project 1 - Spring 2026
+ */
+
 public class MultiSetOperations<T>
 {
     private void ensureSameUniverse(MultiSet<T> a, MultiSet<T> b)
@@ -12,6 +19,9 @@ public class MultiSetOperations<T>
         }
     }
 
+    /**
+     * Computes the multiset union (max counts).
+     */
     public MultiSet<T> union(MultiSet<T> a, MultiSet<T> b)
     {
         ensureSameUniverse(a, b);
@@ -29,6 +39,9 @@ public class MultiSetOperations<T>
         return result;
     }
 
+    /**
+     * Computes the multiset intersection (min counts).
+     */
     public MultiSet<T> intersection(MultiSet<T> a, MultiSet<T> b)
     {
         ensureSameUniverse(a, b);
@@ -46,6 +59,9 @@ public class MultiSetOperations<T>
         return result;
     }
 
+    /**
+     * Computes multiset difference (A - B).
+     */
     public MultiSet<T> difference(MultiSet<T> a, MultiSet<T> b)
     {
         ensureSameUniverse(a, b);
@@ -63,6 +79,9 @@ public class MultiSetOperations<T>
         return result;
     }
 
+    /**
+     * Computes multiset sum (adds counts).
+     */
     public MultiSet<T> sum(MultiSet<T> a, MultiSet<T> b)
     {
         ensureSameUniverse(a, b);

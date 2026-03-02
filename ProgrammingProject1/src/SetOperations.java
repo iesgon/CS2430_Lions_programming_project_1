@@ -1,3 +1,10 @@
+/**
+ * Team: Lions
+ * Team members: Iesus Gonzalez, Chris Salcedo, Edgar Pena
+ * CS2430 Section 501
+ * Programming Project 1 - Spring 2026
+ */
+
 public class SetOperations<T>
 {
     private void sameSizeAssurance(BitStringSet<T> a, BitStringSet<T> b)
@@ -13,6 +20,9 @@ public class SetOperations<T>
         }
     }
 
+    /**
+     * Computes the complement of a set.
+     */
     public BitStringSet<T> complement(BitStringSet<T> a)
     {
         if (a == null)
@@ -29,6 +39,9 @@ public class SetOperations<T>
         return result;
     }
 
+    /**
+     * Computes the union of two sets.
+     */
     public BitStringSet<T> union(BitStringSet<T> a, BitStringSet<T> b)
     {
         sameSizeAssurance(a, b);
@@ -53,6 +66,9 @@ public class SetOperations<T>
         return result;
     }
 
+    /**
+     * Computes the difference A - B.
+     */
     public BitStringSet<T> difference(BitStringSet<T> a, BitStringSet<T> b)
     {
         sameSizeAssurance(a, b);
@@ -65,6 +81,9 @@ public class SetOperations<T>
         return result;
     }
 
+    /**
+     * Computes the symmetric difference of two sets.
+     */
     public BitStringSet<T> symmetricDifference(BitStringSet<T> a, BitStringSet<T> b)
     {
         sameSizeAssurance(a, b);
