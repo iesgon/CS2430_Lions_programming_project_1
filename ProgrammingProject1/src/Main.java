@@ -26,7 +26,8 @@ public class Main
         UniversalSet<String> u =
                 new UniversalSet<>(List.of(
                         "Lion", "Tiger", "Giraffe", "Elephant",
-                        "Zebra", "Penguin", "Gorilla"
+                        "Zebra", "Penguin", "Gorilla", "Hippo",
+                        "Rhino", "Kangaroo"
                 ));
 
         System.out.println("=================================");
@@ -43,34 +44,32 @@ public class Main
         exhibitA.add("Lion");
         exhibitA.add("Elephant");
         exhibitA.add("Penguin");
+        exhibitA.add("Kangaroo");
 
         BitStringSet<String> exhibitB = new BitStringSet<>(u);
         exhibitB.add("Tiger");
         exhibitB.add("Elephant");
         exhibitB.add("Gorilla");
+        exhibitB.add("Rhino");
 
         SetOperations<String> ops = new SetOperations<>();
 
         System.out.println("\n=== SET TEST CASE 1 ===");
-        System.out.println("A bits: " + exhibitA.toBitsString());
-        System.out.println("A elems: " + exhibitA.toElementListString());
-        System.out.println("B bits: " + exhibitB.toBitsString());
-        System.out.println("B elems: " + exhibitB.toElementListString());
+        printSet("A", exhibitA);
+        printSet("B", exhibitB);
 
-        System.out.println("\nA ∪ B: " +
-                ops.union(exhibitA, exhibitB).toElementListString());
+        BitStringSet<String> union = ops.union(exhibitA, exhibitB);
+        BitStringSet<String> inter = ops.intersection(exhibitA, exhibitB);
+        BitStringSet<String> diff = ops.difference(exhibitA, exhibitB);
+        BitStringSet<String> symDiff = ops.symmetricDifference(exhibitA, exhibitB);
+        BitStringSet<String> comp = ops.complement(exhibitA);
 
-        System.out.println("A ∩ B: " +
-                ops.intersection(exhibitA, exhibitB).toElementListString());
-
-        System.out.println("A \\ B: " +
-                ops.difference(exhibitA, exhibitB).toElementListString());
-
-        System.out.println("A Δ B: " +
-                ops.symmetricDifference(exhibitA, exhibitB).toElementListString());
-
-        System.out.println("~A: " +
-                ops.complement(exhibitA).toElementListString());
+        System.out.println();
+        printSet("A ∪ B", union);
+        printSet("A ∩ B", inter);
+        printSet("A \\ B", diff);
+        printSet("A Δ B", symDiff);
+        printSet("~A", comp);
 
 
 /*      ===============================
@@ -81,11 +80,13 @@ public class Main
         zoo1.add("Lion", 3);
         zoo1.add("Penguin", 10);
         zoo1.add("Elephant", 2);
+        zoo1.add("Zebra", 5);
 
         MultiSet<String> zoo2 = new MultiSet<>(u);
         zoo2.add("Lion", 1);
         zoo2.add("Giraffe", 4);
         zoo2.add("Penguin", 6);
+        zoo2.add("Zebra", 2);
 
         MultiSetOperations<String> mops = new MultiSetOperations<>();
 
@@ -107,5 +108,16 @@ public class Main
 
         System.out.println("Sum (add counts): " +
                 mops.sum(zoo1, zoo2).toCountsString());
+    }
+
+    /**
+     * Helper method to print bits and elements
+     * @param label
+     * @param set
+     */
+    private static void printSet(String label, BitStringSet<String> set)
+    {
+        System.out.println(label + " bits:  " + set.toBitsString());
+        System.out.println(label + " elems: " + set.toElementListString());
     }
 }
