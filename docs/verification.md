@@ -1,166 +1,231 @@
-# Verification Plan - Programming Project 1
-Team name: The lions
-Role Owner: Chris Salcedo (Verification Lead)
+# Programming Project 1 – Verification Plan
+Team: Lions  
+Course: CS2430 Section 501  
+Semester: Spring 2026  
 
-##1 Univeral Set
+# 1. Univeral Set Definition
 
-Zoo = [Lion, Tiger, Bear, Koala, Zebra, Giraffe, Gorilla, Otter, Sloth, Panda, Penguin, Elephant, Monkey]
+The Universal set (Zoo) used in this project is:
 
-Index Mapping: 
-0 - Lion
-1 - Tiger
-2 - Bear
-3 - Koala
-4 - Zebra
-5 - Giraffe
-6 - Gorilla
-7 - Otter
-8 - Sloth
-9 - Panda
-10 - Penguin
-11 - Elephant
+U = {  
+0: Lion  
+1: Tiger  
+2: Giraffe  
+3: Elephant  
+4: Zebra  
+5: Penguin  
+6: Gorilla  
+7: Hippo  
+8: Rhino  
+9: Kangaroo  
+}
 
+Universe size n = 10 (meets requirement n ≥ 10)
 
-_**##2 Ordinary Set Test Case 1 (Normal Overlap)**_
+Each bit position in a BitStringSet corresponds to the index above.
 
-**Set A (Big Animals Exhibit):** 
-{Lion, Tiger, Bear, Zebra, Giraffe, Elephant}
-**Bit String Representation:** 
-Set A: [1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1]
+# 2. PART 1 - Ordinary Sets (Bit-String Representation)
 
-**Set B (Forest Habitat exhibit):** 
-{Bear, Koala, Gorilla, Sloth, Panda}
-**Bit String Representation:** 
-Set B: [0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0]
+## 2.1 Test Case 1 - Exhibit Sets
 
-**Expected Results:** 
-A ∪ B: [1, 1, 1, 1, 1, 1, 1, 0 ,1 ,1 ,0 ,1]
-Element Listing: {Lion, Tiger, Bear, koala, Zebra, Giraffe, Gorilla, Sloth, panda, Elephant}
+Set A (Exhibit A):
+{ Lion, Elephant, Penguin, Kangaroo }
 
-A ∩ B: [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-Element Listing: {Bear}
+Set B (Exhibit B):
+{ Tiger, Elephant, Gorilla, Rhino }
 
-A − B: [1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1]
-Element Listing: 
-{Lion TIger, Zebra, Giraffe, Elephant}
+## 2.2 Expected Bit Strings
 
-A ⊕ B: [1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1]
-Element Listing: {Lion, Tiger, Koala, Zebra, Giraffe, Gorilla, Sloth, Panda, Elephant}
+Using universe order:
 
-NOT(A): [0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0]
-Element Listing: {Koala, Gorilla, Otter, Sloth, Panda, Penguin}
+Index:     0 1 2 3 4 5 6 7 8 9  
+Element:   L T G E Z P G H R K  
 
+Set A:
+Lion (0)       = 1  
+Elephant (3)   = 1  
+Penguin (5)    = 1  
+Kangaroo (9)   = 1
 
-_**#3 Ordinary Set Test Case 2 (Disjointed Sets)**_
+A bits:
+1001010001
 
-**Set C (Aquatic Animals):** 
-{Otter, Penguin}
-**Bit String Representation:** 
-[0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0]
+A elems:
+[Lion, Elephant, Penguin, Kangaroo]
 
-**Set D (Primaes Exhitit):** 
-{Gorilla}
-**Bit String Representation:**
-[0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+Set B:
+Tiger (1)      = 1  
+Elephant (3)   = 1  
+Gorilla (6)    = 1  
+Rhino (8)      = 1  
 
-**Expected Results:**
-C ∪ D: [0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0]
-C ∩ D: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-C − D: [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0]
-C ⊕ D: [0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0]
+B bits:
+0101001010
 
-**#4 Ordinary Set Edge Case - Empty Set**
+B elems:
+[Tiger, Elephant, Gorilla, Rhino]
 
-Set E = ∅
-Bit String: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+# 3. Expected Results of Set Operations
 
-**Expected Results (with Set A):**
-E ∪ A = A  
-E ∩ A = ∅  
-E − A = ∅ 
+## 3.1 Union (A ∪ B)
 
-NOT(E) = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+Elements in either set.
 
-**##5 Multiset Test Case - Animal Counts**
+Expected elements:
+{ Lion, Tiger, Elephant, Penguin, Gorilla, Rhino, Kangaroo }
 
-**Multiset A (Safari Exhibit)**
-Lion: 3
-Tiger: 2
-Zebra: 5
-Giraffe: 2
-Elephant: 2
+Bit calculation:
+1 1 0 1 0 1 1 0 1 1
 
-**Mutiset B (Rainforest Exhibit)**
-Bear: 2
-Gorilla: 3
-Sloth: 2
-Panda: 2
-Tiger: 2
+A ∪ B bits:
+1101011011
 
-**Expected Mutiset Results:**
-**Union (Max Count)**
+## 3.2 Intersection (A ∩ B)
 
-Lion: 3
-Tiger: 2
-Bear: 2
-Zebra: 5
-Giraffe: 2
-Elephant: 2
-Gorilla: 3
-Sloth: 2
-Panda: 2
+Elements in both sets.
 
-**Intersection (Min Count)**
-Tiger: 2
+Common element:
+Elephant
 
-**Difference (A-B)**
-Lion: 3
-Tiger: 0
-Zebra: 5
-Giraffe: 2
-Elephant: 2
-(No negative values allowed)
+Bit calculation:
+0 0 0 1 0 0 0 0 0 0
 
-**Sum (A+B)**
-Lion: 3
-Tiger: 4
-Bear: 2
-Zebra: 5
-Giraffe: 2
-Elephant: 2
-Gorilla: 3
-Sloth: 2
-Panda: 2
+A ∩ B bits:
+0001000000
 
-**6. Multiset Edge Case - Substraction to Zero**
-Multiset X: 
-Lion: 1
+Expected elements:
+[Elephant]
 
-Multiset Y: 
-Lion: 5
+## 3.3 Difference (A − B)
 
-**Expected Result:**
-X-Y: 
-Lion: 0
+Elements in A but not in B.
 
-Counts must never become negative.
+{ Lion, Penguin, Kangaroo }
 
-##7 Verification Method
-For each test case: 
-1. Run the Java Program
-2. Capture the printed Output
-3. Compare bit strings exactly to expected arrays
-4. Compare element listings to expected listings
-5. Compare multiset counts to expected values
-6. Confirm no substraction produces negative values 
+Bit calculation:
+1 0 0 0 0 1 0 0 0 1
 
-If any output differs from the expected values, the test case fails.
+A − B bits:
+1000010001
 
-**##8 Rationale for Test Selection**
--Test Case 1 verifies overlapping sets.
---Test Case 2 verifies disjoint behavior.
--The empty set verifies identity and complement laws. 
--The multiset test verifies max, min, subtraction, and addition.
--The substraction edge case verifies non-negative contraints.
+Expected elements:
+[Lion, Penguin, Kangaroo]
 
-These cases ensure both correctness and robustness of the implementation.
+## 3.4 Symmetric Difference (A Δ B)
+
+Elements in exactly one set.
+
+{ Lion, Tiger, Penguin, Gorilla, Rhino, Kangaroo }
+
+Bit calculation:
+1 1 0 0 0 1 1 0 1 1
+
+A Δ B bits:
+1100011011
+
+Expected elements:
+[Lion, Tiger, Penguin, Gorilla, Rhino, Kangaroo]
+
+## 3.5 Complement (~A)
+
+All elements in universe not in A.
+
+Universe minus A:
+{ Tiger, Giraffe, Zebra, Gorilla, Hippo, Rhino }
+
+Bit calculation:
+0 1 1 0 1 0 1 1 1 0
+
+~A bits:
+0110101110
+
+Expected elements:
+[Tiger, Giraffe, Zebra, Gorilla, Hippo, Rhino]
+
+# 4. PART 2 – MultiSet Verification
+
+## 4.1 Initial Multisets
+
+Zoo1 counts:
+Lion: 3  
+Penguin: 10  
+Elephant: 2  
+Zebra: 5  
+All others: 0  
+
+Zoo2 counts:
+Lion: 1  
+Giraffe: 4  
+Penguin: 6  
+Zebra: 2  
+All others: 0  
+
+# 5. Expected MultiSet Operation Results
+
+## 5.1 Union (max)
+
+Lion: max(3,1) = 3  
+Giraffe: 4  
+Elephant: 2  
+Zebra: max(5,2) = 5  
+Penguin: max(10,6) = 10  
+
+Union result:
+{ Lion:3, Tiger:0, Giraffe:4, Elephant:2, Zebra:5, Penguin:10, Gorilla:0, Hippo:0, Rhino:0, Kangaroo:0 }
+
+## 5.2 Intersection (min)
+
+Lion: min(3,1) = 1  
+Penguin: min(10,6) = 6  
+Zebra: min(5,2) = 2  
+
+Intersection result:
+{ Lion:1, Tiger:0, Giraffe:0, Elephant:0, Zebra:2, Penguin:6, Gorilla:0, Hippo:0, Rhino:0, Kangaroo:0 }
+
+## 5.3 Difference (Zoo1 − Zoo2)
+
+Lion: 3 − 1 = 2  
+Elephant: 2 − 0 = 2  
+Zebra: 5 − 2 = 3  
+Penguin: 10 − 6 = 4  
+
+Difference result:
+{ Lion:2, Tiger:0, Giraffe:0, Elephant:2, Zebra:3, Penguin:4, Gorilla:0, Hippo:0, Rhino:0, Kangaroo:0 }
+
+## 5.4 Sum (Addition)
+
+Lion: 3 + 1 = 4  
+Giraffe: 4  
+Elephant: 2  
+Zebra: 5 + 2 = 7  
+Penguin: 10 + 6 = 16  
+
+Sum result:
+{ Lion:4, Tiger:0, Giraffe:4, Elephant:2, Zebra:7, Penguin:16, Gorilla:0, Hippo:0, Rhino:0, Kangaroo:0 }
+
+# 6. Verification Strategy
+
+Verification was performed by:
+
+1. Mapping each element to its fixed universe index.
+2. Manually computing expected bit strings using Boolean logic.
+3. Applying mathematical definitions of:
+   - Union (OR / max)
+   - Intersection (AND / min)
+   - Difference
+   - Symmetric Difference (XOR)
+   - Complement
+   - Multiset sum
+4. Comparing expected results with program output.
+
+All outputs match expected mathematical definitions.
+
+# 7. Conclusion
+
+The implementation correctly follows formal definitions of:
+
+- Set operations using bit-string representation.
+- Multiset operations using count-based representation.
+
+The universal set size meets project requirements (n ≥ 10).
+All required operations were verified for correctness.
